@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Library Book Finder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1 class="logo">Discover <span>Books</span></h1>
+            <p class="subtitle">Search the Open Library for your next great read.</p>
+            
+            <form id="search-form" class="search-form">
+                <div class="search-input-wrapper">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" id="search-input" placeholder="Search by title or author..." autocomplete="off" required>
+                </div>
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+        </header>
+
+        <main class="main-content">
+            <div id="loading-spinner" class="spinner-container hidden">
+                <div class="spinner"></div>
+                <p>Fetching books...</p>
+            </div>
+
+            <div id="error-message" class="error-message hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span id="error-text">No books found.</span>
+            </div>
+
+            <div id="results-grid" class="results-grid">
+                <!-- Book cards will be dynamically injected here -->
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
