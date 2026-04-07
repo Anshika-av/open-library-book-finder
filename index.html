@@ -12,35 +12,52 @@
 <body>
     <div class="app-container">
         <header class="header">
-            <h1 class="logo">Discover <span>Books</span></h1>
+            <div class="header-top">
+                <h1 class="logo">Discover <span>Books</span></h1>
+                <!-- 5. Dark Mode / Light Mode toggle -->
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    🌙 Dark Mode
+                </button>
+            </div>
             <p class="subtitle">Search the Open Library for your next great read.</p>
             
-            <form id="search-form" class="search-form">
+            <div class="controls-container">
+                <!-- 1. Real-time Searching -->
                 <div class="search-input-wrapper">
                     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
-                    <input type="text" id="search-input" placeholder="Search by title or author..." autocomplete="off" required>
+                    <input type="text" id="search-input" placeholder="Search by title or author... (real-time typing)" autocomplete="off">
                 </div>
-                <button type="submit" class="search-btn">Search</button>
-            </form>
+                
+                <div class="filters-row">
+                    <!-- 3. Sorting options -->
+                    <select id="sort-select" class="control-select">
+                        <option value="default">Sort By: Default</option>
+                        <option value="az">Alphabetical (A-Z)</option>
+                        <option value="za">Alphabetical (Z-A)</option>
+                        <option value="year-asc">Year (Oldest-Newest)</option>
+                        <option value="year-desc">Year (Newest-Oldest)</option>
+                    </select>
+
+                    <!-- 2. Filtering options -->
+                    <select id="filter-select" class="control-select">
+                        <option value="all">Filter: All Categories</option>
+                        <option value="classic">Classic (Before 2000)</option>
+                        <option value="modern">Modern (2000 & After)</option>
+                    </select>
+                </div>
+            </div>
         </header>
 
         <main class="main-content">
             <div id="loading-spinner" class="spinner-container hidden">
                 <div class="spinner"></div>
-                <p>Fetching books...</p>
-            </div>
-
-            <div id="error-message" class="error-message hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-                <span id="error-text">No books found.</span>
+                <p>Loading dataset...</p>
             </div>
 
             <div id="results-grid" class="results-grid">
-                <!-- Book cards will be dynamically injected here -->
+                <!-- Book cards will be dynamically injected here using map() and join() -->
             </div>
         </main>
     </div>
